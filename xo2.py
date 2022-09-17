@@ -1,17 +1,15 @@
-import random
-def viborStoroni():
-    while True:
-        print('Выберите за какую сторону вы хотите играть')
-        print('Введите "X" или "O" на английской раскладке')
-        otvet = input().upper()
-        if otvet == 'X' or  otvet == 'O':
-            break
+def RedaktSl(board,letter,move):
+    board[move] = letter
+board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+displayBoard(board)   
+redakt = input('Введите число от 1 до 9')
+redakt = 5
 
-    if otvet == 'X':
-        return ['X','O']
-    else:
-        return ['O','X']
 
-print (viborStoroni())
-       
-        
+def ProverkaWin(board,):
+    print(ProverkaWin(board,'X'))
+board[4] = 'X'
+board[5] = 'X'
+board[6] = 'X'
+displayBoard(board)
+print(ProverkaWin(board,'X',True))

@@ -1,4 +1,5 @@
 import random
+from shutil import move
 def displayBoard(pole):
     print(pole[7]+'|'+pole[8]+'|'+pole[9])
     print('-+-+-')
@@ -28,14 +29,9 @@ def WhoFirst():
         return 'Человек'
 print (WhoFirst())
 
-def RedaktSl(board,letter,move):
+
+def makeMove(board,letter,move):
     board[move] = letter
-board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-displayBoard(board)   
-redakt = input('Введите число от 1 до 9')
-redakt = 5
-
-
 
 def ProverkaWin(board,bo,le):
     return ((bo[7]==le and bo[8]==le and bo[9]==le) or
@@ -46,12 +42,62 @@ def ProverkaWin(board,bo,le):
     (bo[9]==le and bo[6]==le and bo[3]==le) or
     (bo[7]==le and bo[5]==le and bo[3]==le) or
     (bo[9]==le and bo[5]==le and bo[1]==le))
-    print(ProverkaWin(board,'X'))
-board[3] = 'X'
-board[5] = 'X'
-board[7] = 'X'
+    
+def CopyBoard(board):
+    copyboard = [] 
+    for i in board:
+        copyboard.append(1)
+    return copyboard
+
+def ProvCP(board,move):
+    return board[move] == ''
+
+def MovePlayer(board):
+    move = ''
+    while move not in '1 2 3 4 5 6 7 8 9'.split() or not ProvCP(board,int(move)):
+        print('Выберите номер ячейки(1-9)')
+        move = input()
+        return int(move)
+def RandomList(board,movList):
+    randommove = []
+    for i in movList:
+        if ProvCP(board,i):
+            randommove.append(1)
+    if len(randommove) != 0:
+        return random.choice(randommove)
+    else:
+        return None
+
+########################
+#ОСНОВНОЕ ТЕЛО ПРОГРАММЫ 
+########################
+
+
+board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']  
+mL = [1,3,7,9]
+
+hod = RandomList(board,mL)
+makeMove(board,'O',hod)
 displayBoard(board)
-print(ProverkaWin(board,'X',True))
+
+board[1] = 'X'
+board[7] = 'X'
+board[9] = 'X'
+ 
+hod = RandomList(board,mL)
+makeMove(board,'O',hod)
+displayBoard(board)
+
+
+
+
+
+
+    
+ 
+
+
+
 
 
 

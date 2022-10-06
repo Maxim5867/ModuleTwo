@@ -41,7 +41,7 @@ def ProverkaWin(bo,le):
 def CopyBoard(board):
     copyboard = [] 
     for i in board:
-        copyboard.append(1)
+        copyboard.append(i)
     return copyboard
 
 def ProvCP(board,move):
@@ -58,7 +58,7 @@ def RandomList(board,movList):
     randommove = []
     for i in movList:
         if ProvCP(board,i):
-            randommove.append(1)
+            randommove.append(i)
 
     if len(randommove) != 0:
         return random.choice(randommove)
@@ -72,22 +72,22 @@ def RandomList(board,movList):
 
 def ComputerMove(board,computerLetter):
     if computerLetter == 'X':
-        playerLetter = '0'
+        playerLetter = 'O'
     else:
         playerLetter = 'X'
     
     for i in range(1,10):
         copyboard = CopyBoard(board)
-        if ProvCP(copyboard,i):
+        if ProvCP(board,i):
             makeMove(copyboard,computerLetter,i)
-            if ProvCP(copyboard,computerLetter):
+            if ProverkaWin(copyboard,computerLetter):
                 return i
     
     for i in range(1,10):
         copyboard = CopyBoard(board)
-        if ProvCP(copyboard,i):
+        if ProvCP(board,i):
             makeMove(copyboard,playerLetter,i)
-            if ProvCP(copyboard,playerLetter):
+            if ProverkaWin(copyboard,playerLetter):
                 return i
     
     move = RandomList(board,[1,3,7,9])
@@ -114,8 +114,7 @@ while True:
     TheBoard = [' ']*10
     playerLetter, computerLetter = viborStoroni()
 
-#    turn = WhoFirst()
-    turn = 'Человек'
+    turn = WhoFirst()
     print(''+turn+'ходи первым')
 
     gameIsPlaying = True
@@ -136,7 +135,7 @@ while True:
                     print('Ничья')
                     break
                 else:
-                    turn = 'Компьтер'
+                    turn = 'Компьютер'
         else:
             move  = ComputerMove(TheBoard,computerLetter)
             makeMove(TheBoard,computerLetter,move)

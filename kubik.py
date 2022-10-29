@@ -131,7 +131,7 @@ komputer = True
 
 while game:
     while gamer:
-        kub1,kub2 = brosok()
+        kub1,kub2 = ()
         summaG = summaG + kub1 + kub2
         display(ktoBrosaet,kub,kub1,kub2,summaG,summaK)
         if summaG > 21:

@@ -1,4 +1,3 @@
-from inspect import GEN_CLOSED
 import random
 
 #*********#
@@ -21,7 +20,7 @@ def GenNumber():
     return secretCh
 
 def Podskazka(chislo_games,chislo_komp):
-    if chislo_games ==chislo_komp:
+    if chislo_games == chislo_komp:
         return 'Вы угадали!'
     podskazka = []
     for i in range(len(chislo_games)):
@@ -42,8 +41,10 @@ def Proverka_vvoda(num):
         return False
 
     for i in num:
-        if num not in '0 1 2 3 4 5 6 7 8 9'.split():
-            return False  
+        if i not in '0 1 2 3 4 5 6 7 8 9'.split():
+            return False 
+
+    return True 
 
 def playAgain():
     print('Хотите ли вы сыграть ещё? Да или нет')
@@ -81,7 +82,14 @@ while True:
             print('Попытка & %s:' %(popytka))
             chislo_games = input()
     
-        print(Podskazka)
+        print(Podskazka(chislo_games,secretNum))
+
+        popytka += 1
+        if chislo_games == secretNum:
+            break
+        if popytka > KOL_POP:
+            print('попыток больше не осталось. Я загадал число %s.' %(secretNum))
+            
 
     if not playAgain():
         break                         

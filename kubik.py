@@ -23,7 +23,7 @@ print(StartWindow)
 #***************************#
 #Функция изобретения кубиков#
 #***************************#
-def KubikiPlay():
+def kubiki():
     kubiki = ['''
      ...
     |   |
@@ -65,12 +65,13 @@ def KubikiPlay():
 #Функция с правилами#
 #*******************#
 def brosok():
-    sz = []
     k1 = random.randint(1,6)
     k2 = random.randint(1,6)
-    sz.append(k1)
-    sz.append(k2)
-    return sz
+    kub = []
+    kub.append(k1)
+    kub.append(k2)
+    return kub
+
 def playAgain():
     print('Хотите ли вы сыграть ещё? Да или нет')
     while True:
@@ -106,19 +107,16 @@ def pravilaGame():
             После вы сможете продолжить играть, если захотите''')
     print()
     s = input('Для продолжения нажмите Enter')
-def display(gamer,kubiki,kub1,kub2,sG,sK):
+
+def display(kubiki,kub1,kub2,balG,balK,gamer):
+    print(kubiki[kub1])
+    print(kubiki[kub2])
     print(gamer)
     print()
-    print(kubiki(kub1))
-    print(kubiki(kub2))
-    print()
-    print('У игрока - '+str(sG)+'. У компьютера - '+str(sK)+'.')
+    print('Количество очков')
+    print('У игрока - '+str(balG)+'. У компьютера - '+str(balK)+'.')
 
-def WhoFirst():
-    if random.randint(0,1) == 0:
-        return 'Компьютер'
-    else:
-        return 'Человек'
+
 
 def hodP():
     print('Бросаем (Б) или передаем ход?')
@@ -127,12 +125,13 @@ def hodP():
             return True
         else:
             return False
-def proverkaBals(summaK,summaG):
-    if summaK > 21:
+
+def proverkaBals(bK,bG):
+    if bK > 21:
         return False
-    elif summaK > summaG:
+    elif bK > bG:
         return False
-    elif summaK == summaG:
+    elif bK == bG:
         return False
     else:
         return True    
@@ -146,10 +145,11 @@ def proverkaBals(summaK,summaG):
 if vopros('Хотите прочитать правила? (да или нет)'):
     pravilaGame()
 
-ktoBrosaet = 'Человек'
+
+gamer = 'Человек'
 kub = brosok()
-summaK = 0
-summaG = 0
+bK = 0
+bG = 0
 game = True
 gamer = True
 komputer = True
@@ -158,31 +158,31 @@ pris = True
 
 while game:
     while gamer:
-        kub1,kub2 = brosok()
-        summaG = summaG + kub1 + kub2
-        display(kub,kub1,kub2,summaG,summaK)
-        if summaG > 21:
+        o1,o2 = brosok()
+        bG = bG + o1 + o2
+        display(kub,o1,o2,bG,bK,gamer)
+        if bG > 21:
             print('Вы проиграли')
             game = False
-            gamer = False
+            komputer = False
         if game and not (input('(Б)росаем еще или передаем ход?').upper() == 'Б'):
-            gamer = False
+            pris = False
 
     print('Передаем ход')
 
-    ktoBrosaet = 'Компьютер'
+    gamer = 'Компьютер'
     while komputer:
-        kub1,kub2 = brosok()
-        summaK = summaK + kub1 + kub2
-        display(kub,kub1,kub2,summaG,summaK)
+        o1,o2 = brosok()
+        bK = bK + o1 + o2
+        display(kub,o1,o2,bG,bK,gamer)
         s = input('Для продолжения нажмите Enter')
-        komputer = proverkaBals(summaG,summaK)
+        komputer = proverkaBals(bG,bK)
     
-    if  summaK > 21:
+    if  bK > 21:
         print('Поздравляю! Вы выиграли')
-    elif summaK > summaG:
+    elif bK > bG:
         print('Увы! Вы проиграли')
-    elif summaK == summaG:
+    elif bK == bG:
         print('Ничья')
 
 

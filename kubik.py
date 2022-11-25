@@ -136,7 +136,7 @@ def proverkaBals(bG,bK):
 kub = kubiki()
 
 games = True
-while brosok:
+while games:
     if vHelp():
         pravilaGame()
         s = input('Для продолжения нажмите Enter.')

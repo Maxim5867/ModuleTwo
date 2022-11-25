@@ -28,42 +28,40 @@ def kubiki():
      ...
     |   |
     |   |
-    |   |''','''
-     ***
+    |   |
+     """ ''','''
      ...
     |   |
     | * |
-    |   |''','''
-     ***
+    |   |
+     """ ''','''
      ...
     |   |
     |* *|
-    |   |''','''
-     ***
+    |   |
+     """ ''','''
      ...
     |*  |
     | * |
-    |  *|''','''
-     ***
+    |  *|
+     """ ''','''
      ...
     |* *|
     |   |
-    |* *|''','''
-     ***
+    |* *|
+     """ ''','''
      ...
     |* *|
     | * |
-    |* *|''','''
-     ***
+    |* *|
+     """ ''','''
      ...
     |* *|
     |* *|
     |* *|
-     *** ''']
+     """ ''']
     return kubiki
-#*******************#
-#Функция с правилами#
-#*******************#
+
 def brosok():
     k1 = random.randint(1,6)
     k2 = random.randint(1,6)
@@ -75,7 +73,8 @@ def brosok():
 def playAgain():
     print('Хотите ли вы сыграть ещё? Да или нет')
     while True:
-        otvet = input(). lower()
+        otvet = input()
+        otvet = otvet.lower()
         if(otvet == 'да') or (otvet == 'д') or (otvet == 'yes') or (otvet == 'y'):
             return True
         elif(otvet == 'нет') or (otvet == 'н') or (otvet == 'no') or (otvet == 'n'):
@@ -83,10 +82,9 @@ def playAgain():
         else:
             print('''Я вас не понял, напишите пожалуйста да или нет''')
 
-
-def vopros(TextVoprosa):
+def vHelp():
+    print('Хотите ли вы прочитать правила?')
     while True:
-        print(TextVoprosa)
         otvet = input()
         otvet = otvet.lower()
         if (otvet == 'да' ) or (otvet == 'д') or (otvet == 'yes') or (otvet == 'y'):
@@ -94,39 +92,37 @@ def vopros(TextVoprosa):
         elif (otvet == 'нет' ) or (otvet == 'н') or (otvet == 'no') or (otvet == 'n'):
             return False
         else:
-            print('Я вас не понял! Введте ответ еще раз')
+            print('Я вас не понял! Введите ответ еще раз')
 
 def pravilaGame():
-    print('''Представляю вам правила игры кубикию. Игрок и компьтер поочередно пытаються набрать 21 очко,
+    print('''Представляю вам правила игры кубики. Игрок и компьютер поочередно пытаються набрать 21 очко,
              бросая два кубика.
-            Человек начинаете первый, вы можете бросать кубики до тех пора не наберете 21 очко.
+            Человек начинает первый, вы можете бросать кубики до тех пор, пока не наберете 21 очко.
             Но учтите, если вы наберете больше 21 очка, сразу проиграете.
             Когда вы набрали определенное число,которым вы удовлетворены, можете передать ход компьютеру.
             Он будет кидать кубики до тех пор, пока не наберет число больше вашего.
-            Если наберет больше 21, он програет, а вы выиграете.
+            Если наберет больше 21, он проиграет, а вы выиграете.
             После вы сможете продолжить играть, если захотите''')
     print()
-    s = input('Для продолжения нажмите Enter')
+    
 
 def display(kubiki,kub1,kub2,balG,balK,gamer):
+    print(gamer)
     print(kubiki[kub1])
     print(kubiki[kub2])
-    print(gamer)
     print()
     print('Количество очков')
-    print('У игрока - '+str(balG)+'. У компьютера - '+str(balK)+'.')
-
-
+    print('Человек - '+str(balG)+'. Компьютер - '+str(balK)+'.')
 
 def hodP():
     print('Бросаем (Б) или передаем ход?')
     while True:
-        if input(). lower().startswith('O'):
+        if input(). lower().startswith('б'):
             return True
         else:
             return False
 
-def proverkaBals(bK,bG):
+def proverkaBals(bG,bK):
     if bK > 21:
         return False
     elif bK > bG:
@@ -137,61 +133,57 @@ def proverkaBals(bK,bG):
         return True    
 
 
+kub = kubiki()
 
-#***********************#
-#Основное тело программы#
-#***********************#
-
-if vopros('Хотите прочитать правила? (да или нет)'):
-    pravilaGame()
-
-
-gamer = 'Человек'
-kub = brosok()
-bK = 0
-bG = 0
-game = True
-gamer = True
-komputer = True
-pris = True
+games = True
+while brosok:
+    if vHelp():
+        pravilaGame()
+        s = input('Для продолжения нажмите Enter.')
 
 
-while game:
-    while gamer:
+    gamer ='Человек'
+    bG = 0
+    bK = 0
+    g = True
+    gK = True
+
+    pris = True
+
+    while g:
         o1,o2 = brosok()
         bG = bG + o1 + o2
         display(kub,o1,o2,bG,bK,gamer)
+
         if bG > 21:
-            print('Вы проиграли')
-            game = False
-            komputer = False
-        if game and not (input('(Б)росаем еще или передаем ход?').upper() == 'Б'):
+            print('Увы! Вы проиграли!')
+            g = False
+            gK = False
             pris = False
-
-    print('Передаем ход')
-
+        else:
+            g = hodP()
+    
     gamer = 'Компьютер'
-    while komputer:
+
+    while gK:
+
         o1,o2 = brosok()
         bK = bK + o1 + o2
         display(kub,o1,o2,bG,bK,gamer)
-        s = input('Для продолжения нажмите Enter')
-        komputer = proverkaBals(bG,bK)
+
+        s = input('Для продолжения нажмите Enter.')
+
+        gK = proverkaBals(bG,bK)
+
     
-    if  bK > 21:
-        print('Поздравляю! Вы выиграли')
+    if bK > 21:
+        print('Поздравляю! Вы выиграли!')
     elif bK > bG:
-        print('Увы! Вы проиграли')
+        print('Увы! Вы проиграли!')
     elif bK == bG:
         print('Ничья')
-
-
-
-    print('Хочешь сыграть еще?(да или нет)')
-    otvet = input()
-    if otvet == 'нет':
-        break           
-
+    
+    games = playAgain()
 
 
 

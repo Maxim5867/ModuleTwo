@@ -1,4 +1,4 @@
-import random
+import random,math,sys
 #*****************#
 #ФУНКЦИИ ПРОГРАММЫ#
 #*****************#
@@ -12,6 +12,7 @@ def getPlayPole():
             else:
                 board[x].append('`')
     return board
+
 def displayBoard(board):
     str0ne = '   '
     for i in range(1,6):
@@ -46,11 +47,63 @@ def getRandomChests(kolChests):
             chasts.append(newChasts)
     return chasts
 
+def vopros(textVoprosa):
+    print(textVoprosa)
+    while True:
+        otvet = input()
+        otvet = otvet.lower()
+        if (otvet == 'да' ) or (otvet == 'д') or (otvet == 'yes') or (otvet == 'y'):
+            return True
+        elif (otvet == 'нет' ) or (otvet == 'н') or (otvet == 'no') or (otvet == 'n'):
+            return False
+        else:
+            print('Я вас не понял! Введите ответ еще раз')
 
+def isOnBoard(x,y):
+    return x>=0 and x<=59 and y>=0 and y<=14
 
+def makeMove(board,chests,x,y):
+    minDistance = 100
+    for cx,cy in chests:
+        distanciya = math.sqrt((cx-x)*(cx-x)+(cy-y)*(cy-y))
+        if distanciya < minDistance:
+            minDistance = distanciya
+    minDistance = round(minDistance)
+
+    if minDistance == 0:
+        chests.remove([x,y])
+        return 'Вы нашли сундук с сокровищами на затонувшем корабле.'
+    else:
+        if minDistance < 10:
+            board[x][y] = str(minDistance)
+            return 'Сундук с сокровищами обнаружен на расстоянии %s единиц от гидролокатора.' % (minDistance)
+        else:
+            board[x][y] = 'X'
+            return 'Гидролокатор ничего не обнаружил. Все сундуки с сокровищаи вне пределов досягаемости'  
+
+def enterPlayerMove(predHoda):
+    print('''Где следует опустить гидролокатор?
+    (координаты: 0-59 0-14)
+    (или наберите "Выход" для прекращения игры).''')
+    while True:
+        move = input()
+        if move.lower() == 'выход':
+            print('Спасибо за игру')
+            sys.exit()
+
+        move =  move.split()
+
+        if len(move) == 2 and move[0].isdigit() and move[1].isdigit() and isOnBoard(int(move[0]),int(move[1])):
+            if [int(move[0]),int(move[1])] in predHoda:
+                print('Вы уже опускали сюда гидролокатор')
+            else:
+                return [int(move[0]),int(move[1])]
+        else:
+            print('Введите число от 0 до 59, потом пробел, а затем число от 0 до 14.')
 
 #***********************#
 #ОСНОВНОЕ ТЕЛО ПРОГРАММЫ#
 #***********************#
-theBoard = getPlayPole()
-displayBoard(theBoard)
+prov = [[6,8],[13,5]]
+hod = enterPlayerMove(prov)
+print(hod)

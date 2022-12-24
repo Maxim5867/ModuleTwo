@@ -104,6 +104,46 @@ def enterPlayerMove(predHoda):
 #***********************#
 #ОСНОВНОЕ ТЕЛО ПРОГРАММЫ#
 #***********************#
-prov = [[6,8],[13,5]]
-hod = enterPlayerMove(prov)
-print(hod)
+
+
+
+
+while True:
+    kolGidro = 20
+    theBoard = getPlayPole()
+    sunduki = getRandomChests(3)
+    displayBoard(theBoard)
+    print()
+    hodyGamer = []
+
+    while kolGidro > 0:
+        if len(sunduki)==1:
+            okon = ''
+        else:
+            okon = 'a'
+        print('Осталось %s неиспользованных гидролокаторов. Необходимо найти еще %s сундук%s.' % (kolGidro,len(sunduki),okon))
+        x,y = enterPlayerMove(hodyGamer)
+        hodyGamer.append([x,y])
+
+
+        if makeMove(theBoard,sunduki,x,y):
+            for x,y in hodyGamer:
+                makeMove(theBoard,sunduki,x,y)
+        displayBoard(theBoard)
+        if len(sunduki) == 0:
+            print('Вы нашли все сундуки с сокровищами. Поздравляю!')
+            break
+
+        kolGidro -= 1
+
+    if kolGidro == 0:
+        print('''    Все гидролокаторы опущены на дно
+        Разворачиваем корабль и отправляемся домой.
+        Игра окончена!''')
+        print()
+        print('       Вы не нашли сундуки в следующих местах')
+        for x,y in sunduki:
+            print(' %s, %s' % (x,y))
+
+    if not vopros('Хотите ли вы сыграть еще раз?'):
+        sys.exit()    

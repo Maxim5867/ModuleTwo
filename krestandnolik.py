@@ -155,3 +155,4 @@ while True:
     print('Сыграем еще раз?(да или нет)')
     if not input(). lower(). startswith('д'):
         break
+ #la#

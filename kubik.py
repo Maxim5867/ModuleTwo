@@ -196,6 +196,80 @@ while games:
     
     games = playAgain()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def playAgain():
     print('Хотите ли вы сыграть ещё? Да или нет')
     while True:
@@ -205,4 +279,7 @@ def playAgain():
         elif(otvet == 'нет') or (otvet == 'н') or (otvet == 'no') or (otvet == 'n'):
             return False
         else:
+
+            print('''Я вас не понял, напишите пожалуйста да или нет''')
+
             print('''Я вас не понял, напишите пожалуйста да или нет''')

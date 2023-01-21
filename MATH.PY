@@ -36,5 +36,7 @@ else:
 
 
 print('Ты правильно ответил на %s %s из 3. Оценка - "%s"' % (str(otvet),vopros,ocenka))
+
+#lf#
         
 

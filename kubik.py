@@ -196,7 +196,6 @@ while games:
     
     games = playAgain()
 
-#lf#
 
 
 
@@ -218,16 +217,18 @@ while games:
 
 
 
+
+
+
+
+
+    
 
 
 
 
     
 
-
-
-
-    
 
 
 
@@ -278,4 +279,7 @@ def playAgain():
         elif(otvet == 'нет') or (otvet == 'н') or (otvet == 'no') or (otvet == 'n'):
             return False
         else:
+
+            print('''Я вас не понял, напишите пожалуйста да или нет''')
+
             print('''Я вас не понял, напишите пожалуйста да или нет''')

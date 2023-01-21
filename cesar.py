@@ -1,3 +1,6 @@
+
+
+
 SYMBOLS = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯабвгдеёжзийклмнопрстуфхцчшщьыъэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@"#№#$;%^:&?*()-_=+\/|\/,.><''`~][}{'
 MAX_SIZE_KEY = len(SYMBOLS)
 
@@ -57,4 +60,12 @@ if mode[0] != 'в':
     print(getTranslate(mode,text,key))
 else:
     for i in range(1,MAX_SIZE_KEY+1):
+
         print(i,getTranslate('расшифровать',text,i))
+        print(i,getTranslate('расшифровать',text,i))
+
+
+
+        
+
+

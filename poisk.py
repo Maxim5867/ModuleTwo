@@ -146,6 +146,9 @@ while True:
             print(' %s, %s' % (x,y))
 
     if not vopros('Хотите ли вы сыграть еще раз?'):
+
+        sys.exit()    
+
         sys.exit()    
 
 
@@ -188,4 +191,4 @@ while True:
 
 
 
-#
+

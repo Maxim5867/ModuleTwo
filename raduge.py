@@ -2,32 +2,32 @@ from tkinter import *
 
 root = Tk()
 
-def color_name(c_n):
-    if c_n==1:
+def color_name(n):
+    if n==1:
         lab['text'] = 'красный'
         ent.delete(0,END)
         ent.insert(0,'#ff0000')
-    elif c_n==2:
+    elif n==2:
         lab['text'] = 'оранжевый'
         ent.delete(0,END)
         ent.insert(0,'#ff7300')
-    elif c_n==3:
+    elif n==3:
         lab['text'] = 'желтый'
         ent.delete(0,END)
         ent.insert(0,'##ffff00')
-    elif c_n==4:
+    elif n==4:
         lab['text'] = 'зеленый'
         ent.delete(0,END)
         ent.insert(0,'#00ff00')
-    elif c_n==5:
+    elif n==5:
         lab['text'] = 'голубой'
         ent.delete(0,END)
         ent.insert(0,'#007dff')
-    elif c_n==6:
+    elif n==6:
         lab['text'] = 'синий'
         ent.delete(0,END)
         ent.insert(0,'#0711FF')
-    elif c_n==7:
+    elif n==7:
         lab['text'] = 'фиолетовый'
         ent.delete(0,END)
         ent.insert(0,'#5C06FF')

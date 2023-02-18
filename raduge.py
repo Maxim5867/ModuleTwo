@@ -2,6 +2,9 @@ from tkinter import *
 
 root = Tk()
 
+
+fr = Frame(root)
+
 def color_name(n):
     if n==1:
         lab['text'] = 'красный'
@@ -32,15 +35,17 @@ def color_name(n):
         ent.delete(0,END)
         ent.insert(0,'#5C06FF')
 
-ent = Entry(width=50,justify=CENTER)
-lab = Label(width=48,anchor=CENTER)
-but = Button(width=50,bg='#ff0000')
-but1 = Button(width=50,bg='#ff7300')
-but2 = Button(width=50,bg='#ffff00')
-but3 = Button(width=50,bg='#00ff00')
-but4 = Button(width=50,bg='#007dff')
-but5 = Button(width=50,bg='#0711FF')
-but6 = Button(width=50,bg='#5C06FF')
+ent = Entry(width=30,justify=CENTER)
+lab = Label(width=30,anchor=CENTER)
+but = Button(fr,width=2,bg='#ff0000')
+but1 = Button(fr,width=2,bg='#ff7300')
+but2 = Button(fr,width=2,bg='#ffff00')
+but3 = Button(fr,width=2,bg='#00ff00')
+but4 = Button(fr,width=2,bg='#007dff')
+but5 = Button(fr,width=2,bg='#0711FF')
+but6 = Button(fr,width=2,bg='#5C06FF')
+
+
 
 but.bind('<Button-1>',lambda event: color_name(1))
 but1.bind('<Button-1>',lambda event: color_name(2))
@@ -50,14 +55,17 @@ but4.bind('<Button-1>',lambda event: color_name(5))
 but5.bind('<Button-1>',lambda event: color_name(6))
 but6.bind('<Button-1>',lambda event: color_name(7))
 
+
+
 lab.pack()
 ent.pack()
-but.pack()
-but1.pack()
-but2.pack()
-but3.pack()
-but4.pack()
-but5.pack()
-but6.pack()
+fr.pack()
+but.pack(side=LEFT)
+but1.pack(side=LEFT)
+but2.pack(side=LEFT)
+but3.pack(side=LEFT)
+but4.pack(side=LEFT)
+but5.pack(side=LEFT)
+but6.pack(side=LEFT)
 
 root.mainloop()

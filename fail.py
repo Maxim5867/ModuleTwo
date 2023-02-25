@@ -36,4 +36,5 @@ fr2.pack()
 text = Text(width=100,height=50)
 text.pack()
 
+#fflf
 root.mainloop()

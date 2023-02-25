@@ -8,24 +8,41 @@ fr1 = Frame(root)
 
 new_vvod = True
 chislo = 0
+znak = '/ * - + = C'.split()
+
+#def pr_nt(event):
+   # global new_vvod
+   # global chislo
+   # znak = Button.get()
+   # znak = (znak)
+  #  chislo = Button.get()
 
 def pr_nt(set):
-    global new_vvod
-    global chislo
-    znak = '/ x - + = C'.split()
-    if set in range(znak):
-        chislo = ent.get()
-        ent.delete()
-    else:
-        ent.insert(END,set)
-
-
-
-
-    
-ent= Entry(fr,width=15,justify=CENTER)
-lab1 = Label(fr1,width=15)
-b = Button(fr_but,width=1,height=1,text='1')
+    ent.insert(END,set)
+def stir():
+    ent.delete(0,END)
+    lab.destroy()
+def ravno():
+    x1 = ent.get()
+    x1 = (x1)
+    x2 = ent.get()
+    x2 = (x2) 
+    s = (x1+x2)   
+    m = (x1-x2)
+    u = (x1*x2)
+    d = (x1/x2)
+    if (x1+x2):
+        lab['text'] = s
+    elif (x1-x2):
+        lab['text'] = m
+    elif (x1*x2):
+        lab['text'] = u
+    elif (x1/x2):
+        lab['text'] = d
+  
+ent = Entry(fr,width=15,justify=CENTER)
+lab = Label(fr1,width=15)
+b = Button(fr_but,width=1,height=1,text='1',command = lambda x=' ': pr_nt(x))
 b1 = Button(fr_but,width=1,height=1,text='2')
 b2 = Button(fr_but,width=1,height=1,text='3')
 b3 = Button(fr_but,width=1,height=1,text='4')
@@ -36,11 +53,11 @@ b7 = Button(fr_but,width=1,height=1,text='8')
 b8 = Button(fr_but,width=1,height=1,text='9')
 b9 = Button(fr_but,width=1,height=1,text='0')
 b10 = Button(fr_but,width=1,height=1,text='/')
-b11 = Button(fr_but,width=1,height=1,text='x')
+b11 = Button(fr_but,width=1,height=1,text='*')
 b12 = Button(fr_but,width=1,height=1,text='-')
 b13 = Button(fr_but,width=1,height=1,text='+')
-b14 = Button(fr_but,width=1,height=1,text='=')
-b15 = Button(fr_but,width=1,height=1,text='C')
+b14 = Button(fr_but,width=1,height=1,text='=', command = ravno)
+b15 = Button(fr_but,width=1,height=1,text='C', command = stir)
 
 
 b.bind('<Button-1>', lambda event: pr_nt(1))
@@ -54,7 +71,7 @@ b7.bind('<Button-1>', lambda event: pr_nt(8))
 b8.bind('<Button-1>', lambda event: pr_nt(9))
 b9.bind('<Button-1>', lambda event: pr_nt(0))
 b10.bind('<Button-1>', lambda event: pr_nt('/'))
-b11.bind('<Button-1>', lambda event: pr_nt('x'))
+b11.bind('<Button-1>', lambda event: pr_nt('*'))
 b12.bind('<Button-1>', lambda event: pr_nt('-'))
 b13.bind('<Button-1>', lambda event: pr_nt('+'))
 b14.bind('<Button-1>', lambda event: pr_nt('='))
@@ -81,6 +98,6 @@ b13.grid(row=3,column=3)
 b14.grid(row=3,column=2)
 b15.grid(row=3,column=0)
 fr1.pack()
-lab1.pack()
+lab.pack()
 
 root.mainloop()

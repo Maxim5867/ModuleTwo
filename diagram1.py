@@ -21,4 +21,7 @@ c.create_text(350,170, text='42,9%',font='Arial 13')
 c.create_text(250,370, text='28,6%',font='Arial 13')
 c.create_text(110,240, text='17,9%',font='Arial 13')
 
+
 root.mainloop()
+
+

@@ -25,4 +25,8 @@ c.tag_bind(oval, '<Button-1>', oval_func)
 c.tag_bind('rect', '<Button-1>', rect_func)
 c.tag_bind(trian, '<Button-1>', triangle)
 
+
 mainloop()
+
+
+

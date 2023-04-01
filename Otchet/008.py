@@ -17,7 +17,7 @@ def color_name(n):
     elif n==3:
         lab['text'] = 'желтый'
         ent.delete(0,END)
-        ent.insert(0,'#ffff00')
+        ent.insert(0,'##ffff00')
     elif n==4:
         lab['text'] = 'зеленый'
         ent.delete(0,END)

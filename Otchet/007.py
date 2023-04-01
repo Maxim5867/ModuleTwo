@@ -16,16 +16,16 @@ fr = Frame()
 
 
 
-r1 = Radiobutton(frame,text='Вася',indicatoron=0,variable=r_var,value=1,width=10,height=4,command=vivod)
-r2 = Radiobutton(frame,text='Петя',indicatoron=0,variable=r_var,value=2,width=10,height=4,command=vivod)
-r3 = Radiobutton(frame,text='Маша',indicatoron=0,variable=r_var,value=3,width=10,height=4,command=vivod)
-lab = Label(fr,width=30,height=12)
+r1 = Radiobutton(frame,text='Вася',indicatoron=0,variable=r_var,value=1,width=7,height=4,command=vivod)
+r2 = Radiobutton(frame,text='Петя',indicatoron=0,variable=r_var,value=2,width=7,height=4,command=vivod)
+r3 = Radiobutton(frame,text='Маша',indicatoron=0,variable=r_var,value=3,width=7,height=4,command=vivod)
+lab = Label(fr,width=12,height=12)
 
 frame.pack(side=TOP)
 r1.pack(side=LEFT)
 r2.pack(side=LEFT)
 r3.pack(side=LEFT)
 fr.pack()
-lab.pack()
+lab.pack(side=RIGHT)
 
 root.mainloop()

@@ -20,7 +20,6 @@ def down(e):
  y = 20
  c.move(ball, x, y)
 
-# Bind the move function
 root.bind("<Left>", left)
 root.bind("<Right>", right)
 root.bind("<Up>", up)
@@ -31,3 +30,5 @@ c.pack()
 ball = c.create_oval(10,10,30,30, fill='green', outline='black')
 
 root.mainloop()
+
+
